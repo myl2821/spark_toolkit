@@ -16,15 +16,12 @@ conf = SparkToolkit::Conf::Configuration.new
 conf.add_config_dir("config")
 conf["hadoop.security.authentication"] = "kerberos"
 
-buffer = Java::byte[4096].new
 hdfs = SparkToolkit::HDFS::FileSystem.new("hdfs://sensetime-data-hadoop-dev", conf)
 is = hdfs.open("/user/annoback/yyy.c")
 
 yarn = SparkToolkit::YARN::Client.new conf
-#yarn.init conf
 yarn.start
 
-#apps = yarn.get_applications
-
+app = yarn.get_applications[0]
 
 binding.pry
