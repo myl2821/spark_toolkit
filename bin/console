@@ -18,14 +18,6 @@ conf["hadoop.security.authentication"] = "kerberos"
 
 buffer = Java::byte[4096].new
 hdfs = SparkToolkit::HDFS::FileSystem.new("hdfs://sensetime-data-hadoop-dev", conf)
-is = hdfs.open("/user/annoback/packages/1")
-rd = SparkToolkit::HDFS::Reader.new(is)
-
-f = File.open 'hehhe.zip', 'w'
-
-iio = is.to_io
-IO.copy_stream(iio, f)
-#f.write(data)
-f.close
+is = hdfs.open("/user/annoback/yyy.c")
 
 binding.pry
