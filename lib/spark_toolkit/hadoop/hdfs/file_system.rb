@@ -3,7 +3,6 @@ module SparkToolkit
     class FileSystem
       java_import org.apache.hadoop.fs.Path
       java_import org.apache.hadoop.security.UserGroupInformation
-      java_import org.apache.hadoop.conf.Configuration
       java_import java.net.URI
       java_import org.apache.hadoop.fs.FileUtil
 

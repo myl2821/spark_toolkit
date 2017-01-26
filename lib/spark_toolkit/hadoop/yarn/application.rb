@@ -20,4 +20,10 @@ class Java::OrgApacheHadoopYarnApiRecordsImplPb::ApplicationReportPBImpl
       state: get_yarn_application_state
     }
   end
+
+  # NOTE: For detailed state meaning, view the doc:
+  # https://hadoop.apache.org/docs/r2.4.1/api/org/apache/hadoop/yarn/api/records/YarnApplicationState.html
+  def get_yarn_application_state
+    getYarnApplicationState.to_s.to_sym
+  end
 end
