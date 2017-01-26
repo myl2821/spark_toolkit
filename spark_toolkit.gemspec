@@ -6,22 +6,14 @@ require 'spark_toolkit/version'
 Gem::Specification.new do |spec|
   spec.name          = "spark_toolkit"
   spec.version       = SparkToolkit::VERSION
-  spec.authors       = ["myl"]
-  spec.email         = ["moyuli@sensetime.com"]
+  spec.authors       = ["Yuli Mo"]
+  spec.email         = ["lizz@lizz.me"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Yet Another Jruby Spark toolkit.}
+  spec.description   = %q{Yet Another Jruby Spark toolkit.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
+  spec.platform      = "java"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -31,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.13"
+  spec.add_development_dependency "pry"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.0"
 end
