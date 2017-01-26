@@ -20,4 +20,11 @@ buffer = Java::byte[4096].new
 hdfs = SparkToolkit::HDFS::FileSystem.new("hdfs://sensetime-data-hadoop-dev", conf)
 is = hdfs.open("/user/annoback/yyy.c")
 
+yarn = SparkToolkit::YARN::Client.new conf
+#yarn.init conf
+yarn.start
+
+#apps = yarn.get_applications
+
+
 binding.pry
