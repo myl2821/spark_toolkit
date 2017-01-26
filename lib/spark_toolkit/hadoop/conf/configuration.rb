@@ -1,35 +1,32 @@
 module SparkToolkit
   module Conf
+    Configuration = Java::OrgApacheHadoopConf::Configuration
     class Configuration
-      java_import org.apache.hadoop.conf.Configuration
       java_import org.apache.hadoop.fs.Path
-      java_import org.apache.hadoop.security.UserGroupInformation
 
+      alias_method :initialise, :initialize
       def initialize(opts={})
-        @conf = Configuration.new
+        initialise
 
         default_opts = {
           'fs.hdfs.impl' => 'org.apache.hadoop.hdfs.DistributedFileSystem',
           'fs.file.impl' => 'org.apache.hadoop.fs.LocalFileSystem'
         }
 
-        default_opts.merge(opts).each { |k, v| @conf.set(k, v) }
+        default_opts.merge(opts).each { |k, v| set(k, v) }
       end
 
+      alias_method :add_resource_java, :add_resource
       def add_resource(f)
-        @conf.add_resource(Path.new(f))
+        add_resource_java(Path.new(f))
       end
 
       def []=(k, v)
-        @conf.set(k, v)
+        set(k, v)
       end
 
       def [](k)
-        @conf.get(k)
-      end
-
-      def get_conf
-        @conf
+        get(k)
       end
 
       # Load *.xml files under input dir

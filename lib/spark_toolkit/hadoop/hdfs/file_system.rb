@@ -9,7 +9,7 @@ module SparkToolkit
 
       def initialize(url, conf)
         @url = url
-        @hdfs_conf = conf.get_conf
+        @hdfs_conf = conf
         UserGroupInformation.set_configuration(@hdfs_conf)
         @hdfs = org.apache.hadoop.fs.FileSystem.get(URI.create(url), @hdfs_conf)
       end
