@@ -26,4 +26,27 @@ app = yarn.get_applications[-1]
 
 id = app.get_application_id
 
+args = ["--class", "org.apache.spark.deploy.PythonRunner",
+        "--primary-py-file", "pi.py"
+]
+
+=begin
+java.lang.System.setProperty("SPARK_YARN_MODE", "true")
+sconf = org.apache.spark.SparkConf.new
+sconf.set_spark_home(ENV['SPARK_HOME'])
+sconf.set_master('yarn')
+sconf.set_app_name('test')
+sconf.set('spark.submit.deployMode', 'cluster')
+sconf.set('spark.yarn.isPython', 'true')
+
+#sconf.set_property('master', 'yarn')
+cli_args=org.apache.spark.deploy.yarn.ClientArguments.new(args)
+#client=org.apache.spark.deploy.yarn.Client.new(cli_args,conf,sconf)
+#client.run
+=end
+
+sc = SparkToolkit::Spark::Client.new(conf)
+sc.set_app_name 'fff'
+sc.is_python_job(true)
+
 binding.pry
