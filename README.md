@@ -18,6 +18,10 @@ Or install it yourself as:
 
 ## Usage
 
+Ensure `SPARK_HOME` variable was setted in your environment:
+
+	$ export SPARK_HOME=/usr/local/spark
+
 First, load all dep jars into JRuby:
 
 	Dir.glob("#{SPARK_HOME}/jars/*.jar").each { |jar| require jar }
