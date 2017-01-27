@@ -15,7 +15,7 @@ module SparkToolkit
 
       # ==== Returns
       #
-      # * <~HdfsInputString>
+      # * <~HdfsInputStream>
       def open(path)
         @hdfs.open(Path.new(path))
       end
