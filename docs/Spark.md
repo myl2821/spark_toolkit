@@ -4,18 +4,18 @@ This document explains how to get started using SparkToolkit with Spark.
 
 ## Get and Initialize Spark Client Instance
 
-```
+```ruby
 spark_client = SparkToolkit::Spark::Client.new(hadoop_conf)
 ```
 ## Set config metadate
-```
+```ruby
 spark_conf = spark_client.get_spark_conf
 spark_conf.set_app_name "example"
 ```
 
 ## Submit Spark Job
 
-```
+```ruby
 # example of submit pi python job
 args = ["--class", "org.apache.spark.deploy.PythonRunner",
         "--primary-py-file", "pi.py",
