@@ -5,7 +5,7 @@ This document explains how to get started using SparkToolkit with YARN.
 
 ## Get and Initiate YARN Client Instance
 
-```
+```ruby
 yarn = SparkToolkit::YARN::Client.new hadoop_conf
 yarn.start
 ```
@@ -15,7 +15,7 @@ YARN client allows you to monitor the state of all node in its cluster, get repo
 
 ### Get Report of Running Nodes
 
-```
+```ruby
 node_reports = yarn.get_node_reports
 node_reports.each do |report|
 	node_state = report.get_node_state
@@ -30,13 +30,14 @@ end
 
 ### Get Report of YARN Application
 
-```
+```ruby
 app_report = yarn.get_application_report(app_id)
 app_report_detail = app_report.get_detail
 ```
 
 ### Get Report of YARN Attempt
-```
+
+```ruby
 attempts = yarn.get_application_reports(app_id)
 attempts.each do |attempt|
 	attempt_id = attempt.get_attempt_id
