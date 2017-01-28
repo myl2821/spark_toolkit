@@ -32,6 +32,13 @@ Then require this gem:
 
 For more details, view the doc under `docs` directory.
 
+
+## TODO
+
+- Support Spark 1.x
+- Support Spark cluster mode
+- Add YARN application log analyzer
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/myl2821/spark_toolkit. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
