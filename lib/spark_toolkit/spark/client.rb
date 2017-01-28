@@ -7,7 +7,7 @@ module SparkToolkit
         @sconf.set_spark_home(ENV['SPARK_HOME']) if ENV['SPARK_HOME']
       end
 
-      def spark_conf
+      def get_spark_conf
         @sconf
       end
 
