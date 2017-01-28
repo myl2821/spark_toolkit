@@ -3,7 +3,7 @@
 This document explains how to get started using SparkToolkit with HDFS.
 
 ## Set HDFS Config
-Create new HDFS Config:
+Create new Hadoop Config:
 
 ```
 conf = SparkToolkit::Conf::Configuration.new
