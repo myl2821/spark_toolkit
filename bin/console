@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+Dir.glob("#{ENV['SPARK_HOME']}/jars/*.jar").each { |jar| require jar }
 require "bundler/setup"
 require "spark_toolkit"
 
@@ -14,7 +15,7 @@ require "pry"
 
 conf = SparkToolkit::Conf::Configuration.new
 conf.add_config_dir("config")
-#conf["hadoop.security.authentication"] = "kerberos"
+conf["hadoop.security.authentication"] = "kerberos"
 
 hdfs = SparkToolkit::HDFS::FileSystem.new("", conf)
 #is = hdfs.open("/user/annoback/yyy.c")
@@ -27,7 +28,7 @@ app = yarn.get_applications[-1]
 id = app.get_application_id
 
 args = ["--class", "org.apache.spark.deploy.PythonRunner",
-        "--primary-py-file", "pi.py"
+        "--primary-py-file", "pi.py",
 ]
 
 =begin
@@ -48,5 +49,6 @@ cli_args=org.apache.spark.deploy.yarn.ClientArguments.new(args)
 sc = SparkToolkit::Spark::Client.new(conf)
 sc.set_app_name 'fff'
 sc.is_python_job(true)
+sc.active_kerberos
 
 binding.pry
