@@ -22,6 +22,7 @@ args = ["--class", "org.apache.spark.deploy.PythonRunner",
         "--arg", 2]
 spark_conf.yarn_deploy_mode(:cluster) # or :client
 spark_client.is_python_job(true)
+spark_client.avtive_kerberos # If you want to submit job to secure cluster
 # Submit your job to YARN and get its app_id for query
 yarn_app_id = spark_client.yarn_submit(args)
 # Or run as client, print all output into console
