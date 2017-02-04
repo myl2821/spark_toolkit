@@ -35,6 +35,15 @@ app_report = yarn.get_application_report(app_id)
 app_report_detail = app_report.get_detail
 ```
 
+### Get Log of YARN Application
+
+```ruby
+log = yarn.get_application_logs(app_id)
+formatted_log_stdout = SparkToolkit::YARN::SimpleFormatter.format(app_id, :stdout)
+formatted_log_stderr = SparkToolkit::YARN::SimpleFormatter.format(app_id, :stderr)
+formatted_log_all = SparkToolkit::YARN::SimpleFormatter.format(app_id, :all)
+```
+
 ### Get Report of YARN Attempt
 
 ```ruby
