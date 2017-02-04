@@ -37,7 +37,7 @@ For more details, view the doc under `docs` directory.
 
 - Support Spark 1.x
 - Support Spark cluster mode
-- Add YARN application log analyzer
+- ~~Add YARN application log analyzer~~
 
 ## Contributing
 
