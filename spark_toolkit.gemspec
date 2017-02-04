@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Yet Another Jruby Spark toolkit.}
   spec.description   = %q{Yet Another Jruby Spark toolkit.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/myl2821/spark_toolkit"
   spec.license       = "MIT"
   spec.platform      = "java"
 
