@@ -35,7 +35,7 @@ For more details, view the doc under `docs` directory.
 
 ## TODO
 
-- Support Spark 1.x
+- ~~Support Spark 1.x~~
 - Support Spark cluster mode
 - ~~Add YARN application log analyzer~~
 
