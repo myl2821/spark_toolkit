@@ -54,7 +54,7 @@ sc.active_kerberos
 appid = SparkToolkit::YARN::ID.new_instance(1482214219384, 459)
 report = yarn.get_application_report(appid)
 
-logger = SparkToolkit::YARN::Log.new conf
+logger = SparkToolkit::YARN::LogAccessor.new conf
 
 
 binding.pry

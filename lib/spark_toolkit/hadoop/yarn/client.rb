@@ -5,6 +5,7 @@ module SparkToolkit
       alias_method :initalise, :initialize
       def initialize(conf=nil)
         initalise
+        @conf = conf
         init conf if conf
       end
 
@@ -25,6 +26,16 @@ module SparkToolkit
 
       def get_node_reports
         getNodeReports.to_a
+      end
+
+      # Available devs are:
+      # - :all
+      # - :stdout
+      # - :stderr
+      def get_application_logs(appid, dev=:all)
+        @conf ||= SparkToolkit::Conf::Configuration.new
+        @log_accssor ||= SparkToolkit::YARN::LogAccessor.new(@conf)
+        @log_accssor.get_logs(appid, dev)
       end
 
       # kill_application(app_id)

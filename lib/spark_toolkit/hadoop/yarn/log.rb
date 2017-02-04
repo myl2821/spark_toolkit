@@ -1,6 +1,6 @@
 module SparkToolkit
   module YARN
-    class Log
+    class LogAccessor
       java_import org.apache.hadoop.security.UserGroupInformation
       java_import org.apache.hadoop.fs.FileContext
       java_import org.apache.hadoop.fs.Path
@@ -15,16 +15,15 @@ module SparkToolkit
         @max_log_len = 1024 * 1024 # 1M log
       end
 
-      def get_stdout_logs(appid)
-        get_logs_core(appid, ["stdout"])
-      end
-
-      def get_stderr_logs(appid)
-        get_logs_core(appid, ["stderr"])
-      end
-
-      def get_all_logs(appid)
-        get_logs_core(appid, ["stderr", "stdout"])
+      def get_logs(appid, dev)
+        case dev
+        when :stdout
+          get_logs_core(appid, ["stdout"])
+        when :stderr
+          get_logs_core(appid, ["stderr"])
+        when :all
+          get_logs_core(appid, ["stdout", "stderr"])
+        end
       end
 
       private
@@ -118,8 +117,3 @@ module SparkToolkit
     end
   end
 end
-
-
-
-
-
