@@ -74,6 +74,14 @@ module SparkToolkit
         SparkHadoopUtil.get.addCurrentUserCredentials(credentials)
       end
 
+      def executor_cores n
+        @sconf.set_property('spark.executor.cores', n.to_s)
+      end
+
+      def num_executors n
+        @sconf.set_property('spark.executor.instances', n.to_s)
+      end
+
       private
       def prepare_yarn_propreties
         @sconf.set_master('yarn')
@@ -83,7 +91,7 @@ module SparkToolkit
           @sconf.set('spark.submit.deployMode', 'cluster')
         end
 
-        java.lang.System.setProperty("SPARK_YARN_MODE", "true")
+        java.lang.System.set_property("SPARK_YARN_MODE", "true")
       end
     end
   end
