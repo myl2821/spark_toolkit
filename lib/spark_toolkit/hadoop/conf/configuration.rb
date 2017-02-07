@@ -3,6 +3,7 @@ module SparkToolkit
     Configuration = Java::OrgApacheHadoopConf::Configuration
     class Configuration
       java_import org.apache.hadoop.fs.Path
+      java_import org.apache.hadoop.security.UserGroupInformation
 
       alias_method :initialise, :initialize
       def initialize(opts={})
@@ -19,6 +20,12 @@ module SparkToolkit
       alias_method :add_resource_java, :add_resource
       def add_resource(f)
         add_resource_java(Path.new(f))
+      end
+
+      def krb_login(principle, keytab)
+        set('hadoop.security.authentication', 'kerberos')
+        UserGroupInformation.set_configuration(self)
+        UserGroupInformation.login_user_from_keytab(principle, keytab)
       end
 
       def []=(k, v)

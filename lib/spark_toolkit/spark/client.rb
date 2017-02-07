@@ -69,9 +69,10 @@ module SparkToolkit
         @sconf.set("spark.hadoop.hadoop.security.authentication", "kerberos")
         @sconf.set("spark.hadoop.hadoop.security.authorization", "true")
 
+        UserGroupInformation.get_login_user.check_tgt_and_relogin_from_keytab
         UserGroupInformation.set_configuration(SparkHadoopUtil.get.newConfiguration(@sconf))
-        credentials = UserGroupInformation.getLoginUser.getCredentials
-        SparkHadoopUtil.get.addCurrentUserCredentials(credentials)
+        credentials = UserGroupInformation.get_login_user.get_credentials
+        SparkHadoopUtil.get.add_current_user_credentials(credentials)
       end
 
       def executor_cores n
