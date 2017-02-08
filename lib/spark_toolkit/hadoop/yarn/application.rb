@@ -17,7 +17,8 @@ class Java::OrgApacheHadoopYarnApiRecordsImplPb::ApplicationReportPBImpl
       tracking_url: get_tracking_url,
       start_time: get_start_time,
       finish_time: get_finish_time,
-      state: get_yarn_application_state
+      app_state: get_yarn_application_state,
+      final_status: final_status
     }
   end
 
@@ -25,5 +26,9 @@ class Java::OrgApacheHadoopYarnApiRecordsImplPb::ApplicationReportPBImpl
   # https://hadoop.apache.org/docs/r2.4.1/api/org/apache/hadoop/yarn/api/records/YarnApplicationState.html
   def get_yarn_application_state
     getYarnApplicationState.to_s.to_sym
+  end
+
+  def final_status
+    final_application_status.to_s.to_sym
   end
 end

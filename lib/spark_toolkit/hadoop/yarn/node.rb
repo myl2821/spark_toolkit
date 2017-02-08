@@ -1,4 +1,4 @@
-class Java::OrgApacheHadoopYarnApiRecordsImplPb::ResourcePBImpl
+class Java::OrgApacheHadoopYarnApiRecordsImplPb::NodeReportPBImpl
   # get_node_id
 
   # get_num_containers
