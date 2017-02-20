@@ -41,6 +41,16 @@ module SparkToolkit
         @hdfs.copy_to_local_file(false, Path.new(hdfs_src), Path.new(local_dst), true)
       end
 
+      def get_file_status(entry)
+        @hdfs.get_file_status(Path.new(entry))
+      end
+      alias_method :status, :get_file_status
+
+      def rename(src, dst)
+        @hdfs.rename(Path.new(src), Path.new(dst))
+      end
+      alias_method :mv, :rename
+
       def exists?(path)
         @hdfs.exists(Path.new(path))
       end

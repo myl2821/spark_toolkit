@@ -1,7 +1,9 @@
 module SparkToolkit
   module YARN
     Client = Java::OrgApacheHadoopYarnClientApiImpl::YarnClientImpl
+
     class Client
+      attr_reader :conf
       alias_method :initalise, :initialize
       def initialize(conf=nil)
         initalise
@@ -26,6 +28,22 @@ module SparkToolkit
 
       def get_node_reports
         getNodeReports.to_a
+      end
+
+      def get_cluster_report
+        sum = get_node_reports.reduce([0,0,0,0]) do |sum, report|
+          sum[0] += report.get_total_memory
+          sum[1] += report.get_used_memory
+          sum[2] += report.get_total_vcores
+          sum[3] += report.get_used_vcores
+          sum
+        end
+        {
+          total_memory: sum[0],
+          used_memory: sum[1],
+          total_vcores: sum[2],
+          used_vcores: sum[3],
+        }
       end
 
       # Available devs are:
